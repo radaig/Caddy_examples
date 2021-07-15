@@ -15,6 +15,7 @@ test.ptmind.com:80{
 ```
 
 # 单一静态站点，自动生成ssl证书
+后会自动添加ssl地址`tls /etc/ssl/cert.pem /etc/ssl/key.pem`
 ```
 test.ptmind.com:443{
     #写443 端口，会要求输入邮箱地址，自动生成ssl 加密证书
