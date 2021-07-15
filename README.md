@@ -1,8 +1,37 @@
-# This repository is deprecated and no longer maintained.
+Caddy安装
+[官网](https://caddyserver.com/)
+# 安装Centos7.5
+```
+yum install yum-plugin-copr
+yum copr enable @caddy/caddy
+yum install caddy
+```
+# 服务文件
+```
+# caddy.service
+[Unit]
+Description=Caddy
+After=network.target network-online.target
+Requires=network-online.target
 
-The examples in this repo are for Caddy v1, which has been obsoleted by Caddy 2. **Please [upgrade to Caddy 2](https://caddyserver.com/docs/v2-upgrade).**
+[Service]
+Type=notify
+ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 
+[Install]
+WantedBy=multi-user.target
+```
 
-## Examples for v2
+# 配置文件,各配置案例见其它
+```
+config/Caddyconfig
 
-Check out **[the wiki category in our forums](https://caddy.community/c/wiki/13)** for v2 examples, guides, and tutorials. Anyone can post or edit a wiki topic.
+```
+
