@@ -102,6 +102,7 @@ test.ptbox.cn:443 {
     tls test@ptbox.cn
     redir https://www.ptmind.com{uri}
 }
+```
 ## 文件跳转
 `redir /resources/images/photo.jpg /resources/images/drawing.jpg 307`
 
